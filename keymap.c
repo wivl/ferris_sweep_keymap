@@ -52,27 +52,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /*
   
  | 1 | 2 | 3 | 4 | 5 |       | 6 | 7 | 8 | 9 | 0 |
- | # | < | ( | [ | { |       | = | ? | ' | + | * |
- | $ | > | ) | ] | } |       | @ | ! | " | - | / |
+ | # | _ | ( | [ | { |       | = | ? | ' | + | * |
+ | $ | & | ) | ] | } |       | @ | ! | " | - | / |
              |   | CMD |    |   |   |
   */
   [_SYMBOL_1] = LAYOUT(
     KC_1,    KC_2,    KC_3,    KC_4,    KC_5,            KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-    KC_HASH, KC_LABK, KC_LPRN, KC_LBRC, KC_LCBR,         KC_EQL , KC_QUES, KC_QUOT,   KC_PLUS, KC_ASTR,
-    KC_DLR , KC_RABK, KC_RPRN, KC_RBRC, KC_RCBR,         KC_AT, KC_EXLM, KC_DQUO, KC_MINS, KC_SLSH,
+    KC_HASH, KC_UNDS, KC_LPRN, KC_LBRC, KC_LCBR,         KC_EQL , KC_QUES, KC_QUOT,   KC_PLUS, KC_ASTR,
+    KC_DLR , KC_AMPR, KC_RPRN, KC_RBRC, KC_RCBR,         KC_AT, KC_EXLM, KC_DQUO, KC_MINS, KC_SLSH,
                                     _______, KC_LCMD, _______, _______
   ),
   
    /*
   
- | ` | \ | % | ^ |   |       |   |   |   |   |   |
- | ~ | | | & | _ |   |       |   |   |   |   |   |
+ | ` | \ | % |   |   |       |   |   |   |   |   |
+ | ~ | | | ^ |   |   |       |   |   |   |   |   |
  |   |   |   |   |   |       |   |   |   |   |   |
              |   |   |       |   |   |
   */
   [_SYMBOL_2] = LAYOUT(
-    KC_GESC, KC_BSLS, KC_PERC, KC_CIRC, _______,         _______, _______, _______, _______, _______,
-    KC_TILD, KC_PIPE, KC_AMPR, KC_UNDS, _______,         _______, _______, _______, _______, _______,
+    KC_GESC, KC_BSLS, KC_PERC, _______, _______,         _______, _______, _______, _______, _______,
+    KC_TILD, KC_PIPE, KC_CIRC, _______, _______,         _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______,         _______, _______, _______, _______, _______,
                                     _______, _______, _______, _______
   ),
