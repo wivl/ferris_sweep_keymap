@@ -1,0 +1,134 @@
+/*
+ * Copyright (c) 2020 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define QWERTY 0
+#define SYM    1
+#define SYM_2  2
+#define FNC    3
+#define FNC_2  4
+
+
+
+&mt {
+  //  flavor = "tap-preferred";
+   // tapping_term_ms = <200>;
+};
+
+/ { 
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_sym2 {
+            timeout-ms = <50>;
+            key-positions = <32 33>;
+            bindings = <&tog SYM_2>;
+        };
+
+        combo_fun2 {
+            timeout-ms = <50>;
+            key-positions = <30 31>;
+            bindings = <&tog FNC_2>;
+        };
+
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+                
+/*
+  
+ | Q | W | E | R | T |       | Y | U | I | O | P |
+ | A | S | D | F | G |       | H | J | K | L | ;: |
+ | Z | X | C | V | B |       | N | M | ,< | .> | /? |
+          | FUN | SHIFT | | SPACE | SYMBOL |
+  */
+
+       	default_layer {
+		    bindings = <
+		&kp Q   &kp W   &kp E   &kp R   &kp T 						&kp Y   &kp U   &kp I    &kp O   &kp P 
+		&kp A   &kp S   &kp D   &kp F   &kp G 			        	&kp H   &kp J   &kp K    &kp L   &kp SEMI
+		&kp Z   &kp X   &kp C   &kp V   &kp B				        &kp N   &kp M   &kp CMMA &kp DOT &kp SLASH
+          				        &mo FNC &kp LSFT  				    &kp SPC &mo SYM 
+		>;
+		};
+
+/*
+  
+ | 1 | 2 | 3 | 4 | 5 |       | 6 | 7 | 8 | 9 | 0 |
+ | # | _ | ( | [ | { |       | = | ? | ' | + | * |
+ | $ | & | ) | ] | } |       | @ | ! | " | - | / |
+             |   | CMD |    |   |   |
+  */
+
+       	sym_layer {
+		    bindings = <
+		&kp NUM_1  &kp NUM_2    &kp NUM_3  &kp NUM_4   &kp NUM_5		&kp NUM_6   &kp NUM_7   &kp NUM_8   &kp NUM_9   &kp NUM_0 
+		&kp HASH   &kp UNDER    &kp LPAR   &kp LBKT    &kp LBRC 		&kp EQUAL   &kp QMARK   &kp SQT     &kp PLUS    &kp STAR 
+		&kp DLLR   &kp AMPS 	&kp RPAR   &kp RBKT    &kp RBRC 	    &kp AT      &kp EXCL    &kp DQT     &kp MINUS   &kp SLASH 
+					                       &none       &kp LGUI  		&none       &none 
+		>;
+		};
+		
+/*
+  
+ | ` | \ | % |   |   |       |   |   |   |   |   |
+ | ~ | | | ^ |   |   |       |   |   |   |   |   |
+ |   |   |   |   |   |       |   |   |   |   |   |
+             |   |   |       |   |   |
+  */
+
+		sym_2_layer {
+		    bindings = <
+		&kp GRAVE  &kp BSLH  &kp PRCNT  &none  &none    			&none  &none  &none  &none  &none
+		&kp TILDE  &kp PIPE  &kp CARET  &none  &none    			&none  &none  &none  &none  &none
+		&none      &none     &none      &none  &none    			&none  &none  &none  &none  &none
+					                    &none  &none  				&none  &none 
+		>;
+		};	
+		
+/*
+  
+ | ESC |   |   |   |   |           |   |   |   |   |   |
+ | TAB |   |   |   |   |           | h | j | k | l |   |
+ | CAP |   |   |   |   |           |   |   |   |   |   |
+      |   |   |           | BSPC | ENTER |
+  */
+
+// &kp LCMD(LS(NUMBER_3))  &kp LCMD(LS(NUMBER_4))  &kp LCMD(LS(NUMBER_5))
+
+		fnc_layer {
+		    bindings = <
+		&kp ESC  &none    		&kp LG(LS(NUMBER_3)) 	&kp LG(LS(NUMBER_4)) 	&kp LG(LS(NUMBER_5))   			&kp LC(LEFT)    &kp LC(DOWN)  		&kp LC(UP)  		&kp LC(RIGHT)  			&none
+		&kp TAB  &kp LG(S)    	&none 					&none 					&none    						&kp LEFT    	&kp DOWN    &kp UP      &kp RIGHT      	&none
+		&kp CAPS &kp LG(X)    	&kp LG(C) 				&kp LG(V) 				&kp LG(Z)    					&kp LG(SPACE)  	&none     	&none       &none       	&none
+					    								&none       			&none  							&kp BSPC        &kp ENTER 
+		>;
+		};	
+
+/*
+  
+ | F1 | F2 | F3 | F4 | F5 |           | F6 | F7 | F8 | F9 | F10 |
+ |   |   |   |   |   |           |   |   |   |   |   |
+ | F11 | F12 |   |   |   |           |   |   |   |   |   |
+             |   |   |           |   |   |
+  */
+
+        fnc_2_layer {
+		    bindings = <
+		&kp F1          &kp F2          &kp F3          &kp F4          &kp F5 			    &kp F6              &kp F7              &kp F8              &kp F9              &kp F10
+		&kp LA(LS(A))   &kp LA(LS(S))   &kp LA(LS(D))   &kp LA(LS(F))   &kp LA(LS(I))  	    &kp LA(LS(H))       &kp LA(LS(J))       &kp LA(LS(K))       &kp LA(LS(L))       &none 
+		&kp F11         &kp F22         &none      		&none          	&none   			&kp LA(LS(LC(H)))   &kp LA(LS(LC(J)))   &kp LA(LS(LC(K)))   &kp LA(LS(LC(L)))   &none 
+					                                    &none           &none  			    &none               &none 
+		>;
+		};	
+        
+	};
+};
